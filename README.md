@@ -1,5 +1,7 @@
 # AI Knowledge Gap Agent
 
+[![tests](https://github.com/Yufereva/ai-knowledge-gap-agent/actions/workflows/tests.yml/badge.svg)](https://github.com/Yufereva/ai-knowledge-gap-agent/actions/workflows/tests.yml)
+
 A portfolio prototype that analyzes support conversations to identify missing,
 outdated, or inconsistent knowledge across help center content, macros,
 runbooks, and internal documentation.
