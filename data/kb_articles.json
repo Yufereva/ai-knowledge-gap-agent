@@ -1,0 +1,77 @@
+[
+  {
+    "id": "KB-001",
+    "title": "API Key Management Guide",
+    "content": "This guide covers how to view, rotate, and reset your API key from Settings > Developer > API Keys. To reset a key: open the API Keys page, click Reset next to the key you want to replace, confirm the action, and copy the new key immediately since it is only shown once."
+  },
+  {
+    "id": "KB-002",
+    "title": "Single Sign-On (SSO) Setup with Okta and Azure AD",
+    "content": "Step-by-step instructions for configuring SAML-based single sign-on with Okta or Azure AD, including the ACS URL, entity ID, certificate upload, group-to-role mapping, and how to test SSO with a single user before enforcing it organization-wide."
+  },
+  {
+    "id": "KB-003",
+    "title": "Changing Your Workspace Timezone",
+    "content": "Workspace administrators can change the default timezone from Settings > General > Timezone. This affects all timestamps, scheduled reports, and daylight saving time adjustments for every user in the workspace, unless a user overrides it individually."
+  },
+  {
+    "id": "KB-004",
+    "title": "Data Export Overview",
+    "content": "You can export data from most report views using the Export button in the top right corner. Exported files can be printed or saved as PDF for sharing with stakeholders."
+  },
+  {
+    "id": "KB-005",
+    "title": "Account Security Basics",
+    "content": "We recommend using a strong, unique password for your account. Additional security options are available under Settings > Security, including session management, login activity history, and an option to turn on two-factor authentication."
+  },
+  {
+    "id": "KB-006",
+    "title": "Understanding API Response Codes",
+    "content": "This article lists common HTTP response codes returned by the API, such as 200, 400, 401, 404, and 500, along with general guidance for handling error responses in client code."
+  },
+  {
+    "id": "KB-007",
+    "title": "Getting Started with the Platform",
+    "content": "Welcome! This overview walks new users through creating a workspace, inviting teammates, and navigating the main dashboard for the first time."
+  },
+  {
+    "id": "KB-008",
+    "title": "Billing FAQ",
+    "content": "Answers to common billing questions, including how invoices are generated, accepted payment methods, and how to update your payment method on file."
+  },
+  {
+    "id": "KB-009",
+    "title": "Managing Team Members",
+    "content": "Admins can invite, remove, and edit permissions for individual team members from the People page. Each teammate is added one at a time by entering their email address."
+  },
+  {
+    "id": "KB-010",
+    "title": "Notifications and Alerts Settings",
+    "content": "Configure which events trigger email or in-app notifications, including new ticket assignments, mentions, and daily digest summaries."
+  },
+  {
+    "id": "KB-011",
+    "title": "Mobile App Overview",
+    "content": "The mobile app lets you review tickets, respond to customers, and receive push notifications on the go. Available for iOS and Android."
+  },
+  {
+    "id": "KB-012",
+    "title": "Integrations Overview",
+    "content": "The platform integrates with popular tools like Slack, Salesforce, and Jira. Webhooks notify external systems when events occur, such as a new ticket being created."
+  },
+  {
+    "id": "KB-013",
+    "title": "Password Reset Guide",
+    "content": "If you forgot your account password, click Forgot Password on the login screen and follow the emailed link to choose a new password. This does not affect your API key."
+  },
+  {
+    "id": "KB-014",
+    "title": "Two-Way Data Sync Overview",
+    "content": "Describes how two-way sync keeps records consistent between this platform and connected CRMs, including sync frequency and conflict resolution rules."
+  },
+  {
+    "id": "KB-015",
+    "title": "Scheduling Recurring Reports",
+    "content": "Reports can be scheduled to run daily, weekly, or monthly and delivered by email as a PDF attachment to a chosen list of recipients."
+  }
+]

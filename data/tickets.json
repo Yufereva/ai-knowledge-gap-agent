@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "T-30001",
+    "subject": "Can't find where to reset my API key",
+    "body": "I need to rotate our API key after an employee left but I can't find the setting anywhere in the dashboard.",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30002",
+    "subject": "How do I regenerate an API key?",
+    "body": "Our current API key may have been exposed. What are the steps to generate a new one without breaking our integration?",
+    "created_at": "2026-04-09T07:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30003",
+    "subject": "API key reset instructions needed",
+    "body": "Please send me the exact steps to reset the API key for our production workspace.",
+    "created_at": "2026-04-17T14:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30004",
+    "subject": "Rotating API keys for security audit",
+    "body": "Our security team requires us to rotate all API keys quarterly. How do I do this from the account settings?",
+    "created_at": "2026-04-25T21:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30005",
+    "subject": "Where is the API key management page?",
+    "body": "I used to be able to see our API key under settings but I can't locate it after the redesign.",
+    "created_at": "2026-05-03T04:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30006",
+    "subject": "Need a new API key, old one compromised",
+    "body": "We think our API key leaked in a public repo. How fast can we get a replacement key issued?",
+    "created_at": "2026-05-11T11:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30007",
+    "subject": "Generate additional API key for staging",
+    "body": "We want a second API key scoped to our staging environment. How is that configured?",
+    "created_at": "2026-05-19T18:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30008",
+    "subject": "API key expired, need to reissue",
+    "body": "Our integration stopped working and support said the API key expired. How do I reissue it?",
+    "created_at": "2026-05-27T01:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30009",
+    "subject": "Steps to revoke and recreate API key",
+    "body": "Can you walk me through revoking our current API key and creating a replacement?",
+    "created_at": "2026-06-04T08:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30010",
+    "subject": "API key rotation for CI pipeline",
+    "body": "We rotate secrets automatically. Is there a documented process for rotating the API key without downtime?",
+    "created_at": "2026-06-12T15:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30011",
+    "subject": "Lost access to API key value",
+    "body": "I never copied the API key when it was created and now I can't view it again. What are my options?",
+    "created_at": "2026-06-20T22:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30012",
+    "subject": "New team member needs API key access",
+    "body": "A new engineer joined and needs their own API key. How do we provision one?",
+    "created_at": "2026-06-28T05:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30013",
+    "subject": "API key reset after account transfer",
+    "body": "We transferred ownership of the workspace. Do we need to reset the API key as part of that?",
+    "created_at": "2026-07-06T12:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30014",
+    "subject": "How to reset the API key safely",
+    "body": "What is the recommended way to reset an API key so our production integration is not interrupted?",
+    "created_at": "2026-07-14T19:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "api_key_reset"
+  },
+  {
+    "id": "T-30015",
+    "subject": "Configuring SSO with Okta",
+    "body": "We use Okta company-wide and want all logins to go through SSO. How do we set that up?",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30016",
+    "subject": "Azure AD single sign-on setup",
+    "body": "Our IT team wants to enforce Azure AD SSO for this tool. What configuration is required on our side?",
+    "created_at": "2026-04-11T07:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30017",
+    "subject": "Enforcing SSO for all users",
+    "body": "Can we require every user in our workspace to log in only through SSO once it's configured?",
+    "created_at": "2026-04-21T14:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30018",
+    "subject": "SAML configuration for identity provider",
+    "body": "We need the SAML metadata and ACS URL to configure our identity provider for SSO.",
+    "created_at": "2026-05-01T21:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30019",
+    "subject": "SSO login redirect not working",
+    "body": "After setting up SSO, users are redirected to an error page. What are the correct setup steps?",
+    "created_at": "2026-05-11T04:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30020",
+    "subject": "How to enable SSO for enterprise plan",
+    "body": "Is SSO available on our plan, and how do we turn it on for our organization?",
+    "created_at": "2026-05-21T11:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30021",
+    "subject": "SSO setup with Google Workspace",
+    "body": "We'd like to use Google Workspace as our identity provider for single sign-on. Is that supported?",
+    "created_at": "2026-05-31T18:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30022",
+    "subject": "Mapping SSO groups to roles",
+    "body": "Once SSO is configured, how do we map identity provider groups to roles in the app?",
+    "created_at": "2026-06-10T01:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30023",
+    "subject": "SSO certificate renewal steps",
+    "body": "Our SAML certificate is expiring soon. What is the process to update it without breaking logins?",
+    "created_at": "2026-06-20T08:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30024",
+    "subject": "Testing SSO before full rollout",
+    "body": "Is there a way to test SSO configuration with one test user before enabling it company-wide?",
+    "created_at": "2026-06-30T15:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30025",
+    "subject": "SSO setup documentation request",
+    "body": "Does the vendor provide setup instructions for SSO configuration with a generic SAML provider?",
+    "created_at": "2026-07-10T22:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30026",
+    "subject": "Multiple identity providers for SSO",
+    "body": "Can we configure SSO with two different identity providers for two subsidiaries?",
+    "created_at": "2026-07-20T05:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "sso_setup"
+  },
+  {
+    "id": "T-30027",
+    "subject": "Change workspace default timezone",
+    "body": "All our reports show times in UTC, but our team is in EST. How do we change the default timezone?",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "timezone_settings"
+  },
+  {
+    "id": "T-30028",
+    "subject": "Timezone setting affecting scheduled reports",
+    "body": "Our scheduled reports arrive at the wrong local time. Where do we set the workspace timezone?",
+    "created_at": "2026-04-14T07:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "timezone_settings"
+  },
+  {
+    "id": "T-30029",
+    "subject": "How to set timezone for new workspace",
+    "body": "When creating a new workspace, what determines the default timezone and can we change it later?",
+    "created_at": "2026-04-27T14:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "timezone_settings"
+  },
+  {
+    "id": "T-30030",
+    "subject": "Timestamps look off by several hours",
+    "body": "The timestamps on tickets look off by five hours compared to our local time. How do we fix this?",
+    "created_at": "2026-05-10T21:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "timezone_settings"
+  },
+  {
+    "id": "T-30031",
+    "subject": "Per-user timezone vs workspace timezone",
+    "body": "Can individual users set their own timezone, or is it only a workspace-wide setting?",
+    "created_at": "2026-05-23T04:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "timezone_settings"
+  },
+  {
+    "id": "T-30032",
+    "subject": "Daylight saving time not applied correctly",
+    "body": "Our reports didn't shift for daylight saving time this year. Is the timezone setting supposed to handle that automatically?",
+    "created_at": "2026-06-05T11:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "timezone_settings"
+  },
+  {
+    "id": "T-30033",
+    "subject": "Update timezone after office relocation",
+    "body": "We moved offices to a new timezone. How do we update the workspace-level timezone setting?",
+    "created_at": "2026-06-18T18:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "timezone_settings"
+  },
+  {
+    "id": "T-30034",
+    "subject": "Timezone setting for multi-region team",
+    "body": "Our team is spread across three timezones. How does the workspace timezone setting handle that?",
+    "created_at": "2026-07-01T01:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "timezone_settings"
+  },
+  {
+    "id": "T-30035",
+    "subject": "Where is the timezone configuration option",
+    "body": "I looked through account settings but couldn't find where to change the timezone.",
+    "created_at": "2026-07-14T08:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "timezone_settings"
+  },
+  {
+    "id": "T-30036",
+    "subject": "How do I export data as CSV?",
+    "body": "I need to download our ticket data as a CSV file for a board presentation. Is that possible?",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "question",
+    "topic": "csv_export"
+  },
+  {
+    "id": "T-30037",
+    "subject": "CSV export missing some columns",
+    "body": "When I export to CSV, several columns from the dashboard view are missing. Is that expected?",
+    "created_at": "2026-04-13T07:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "question",
+    "topic": "csv_export"
+  },
+  {
+    "id": "T-30038",
+    "subject": "Export to CSV for finance team",
+    "body": "Finance needs a CSV export of billing data every month. What's the process?",
+    "created_at": "2026-04-25T14:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "question",
+    "topic": "csv_export"
+  },
+  {
+    "id": "T-30039",
+    "subject": "Bulk CSV export of all tickets",
+    "body": "Can we export our entire ticket history as one CSV file instead of paginated exports?",
+    "created_at": "2026-05-07T21:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "question",
+    "topic": "csv_export"
+  },
+  {
+    "id": "T-30040",
+    "subject": "CSV export button not visible",
+    "body": "I don't see a CSV export option on the reports page, only PDF. Am I missing something?",
+    "created_at": "2026-05-19T04:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "question",
+    "topic": "csv_export"
+  },
+  {
+    "id": "T-30041",
+    "subject": "Scheduled CSV export to email",
+    "body": "Is it possible to schedule a recurring CSV export that gets emailed automatically?",
+    "created_at": "2026-05-31T11:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "question",
+    "topic": "csv_export"
+  },
+  {
+    "id": "T-30042",
+    "subject": "CSV export character encoding issue",
+    "body": "Our exported CSV file shows broken characters for names with accents. How do we fix the encoding?",
+    "created_at": "2026-06-12T18:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "question",
+    "topic": "csv_export"
+  },
+  {
+    "id": "T-30043",
+    "subject": "Export filtered view as CSV",
+    "body": "I filtered the table by status and want to export just that filtered view to CSV.",
+    "created_at": "2026-06-24T01:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "question",
+    "topic": "csv_export"
+  },
+  {
+    "id": "T-30044",
+    "subject": "Difference between CSV and Excel export",
+    "body": "Is there a difference in data completeness between the CSV and Excel export options?",
+    "created_at": "2026-07-06T08:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "question",
+    "topic": "csv_export"
+  },
+  {
+    "id": "T-30045",
+    "subject": "Automating CSV export via API",
+    "body": "Can we pull the same CSV export data through the API instead of the UI?",
+    "created_at": "2026-07-18T15:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "question",
+    "topic": "csv_export"
+  },
+  {
+    "id": "T-30046",
+    "subject": "How do I turn on two-factor authentication?",
+    "body": "We want to require 2FA for all admin accounts. Where do we enable that?",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "two_factor_auth"
+  },
+  {
+    "id": "T-30047",
+    "subject": "2FA setup with authenticator app",
+    "body": "Can we use Google Authenticator for two-factor authentication, or only SMS codes?",
+    "created_at": "2026-04-14T07:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "two_factor_auth"
+  },
+  {
+    "id": "T-30048",
+    "subject": "Lost my 2FA device, locked out",
+    "body": "I lost my phone with my authenticator app and can't log in. How do I recover access?",
+    "created_at": "2026-04-27T14:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "two_factor_auth"
+  },
+  {
+    "id": "T-30049",
+    "subject": "Enforcing 2FA for entire organization",
+    "body": "Is there a setting to force two-factor authentication for every member of our workspace?",
+    "created_at": "2026-05-10T21:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "two_factor_auth"
+  },
+  {
+    "id": "T-30050",
+    "subject": "2FA backup codes not working",
+    "body": "The backup codes I saved for two-factor authentication aren't being accepted. What should I do?",
+    "created_at": "2026-05-23T04:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "two_factor_auth"
+  },
+  {
+    "id": "T-30051",
+    "subject": "Disabling 2FA for a single user",
+    "body": "One of our admins wants to temporarily disable two-factor authentication. Is that possible?",
+    "created_at": "2026-06-05T11:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "two_factor_auth"
+  },
+  {
+    "id": "T-30052",
+    "subject": "Two-factor authentication and SSO together",
+    "body": "If we enable SSO, do we still need to configure two-factor authentication separately?",
+    "created_at": "2026-06-18T18:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "two_factor_auth"
+  },
+  {
+    "id": "T-30053",
+    "subject": "2FA recovery process for admins",
+    "body": "What is the recovery process when an admin is locked out of two-factor authentication?",
+    "created_at": "2026-07-01T01:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "two_factor_auth"
+  },
+  {
+    "id": "T-30054",
+    "subject": "Setting up 2FA via SMS",
+    "body": "How do we configure SMS-based two-factor authentication for users without a smartphone?",
+    "created_at": "2026-07-14T08:00:00Z",
+    "product_area": "security",
+    "ticket_type": "question",
+    "topic": "two_factor_auth"
+  },
+  {
+    "id": "T-30055",
+    "subject": "Getting 429 errors from the API",
+    "body": "Our integration suddenly started returning 429 errors. What are the current rate limits?",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "rate_limit_errors"
+  },
+  {
+    "id": "T-30056",
+    "subject": "What is our API rate limit?",
+    "body": "We're scaling up our integration and need to know the exact request-per-minute rate limit.",
+    "created_at": "2026-04-16T07:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "rate_limit_errors"
+  },
+  {
+    "id": "T-30057",
+    "subject": "Rate limit errors during bulk sync",
+    "body": "Our nightly bulk sync job hits rate limit errors. How should we handle backoff and retries?",
+    "created_at": "2026-05-01T14:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "rate_limit_errors"
+  },
+  {
+    "id": "T-30058",
+    "subject": "Increase API rate limit for our account",
+    "body": "Can we request a higher rate limit for our enterprise account?",
+    "created_at": "2026-05-16T21:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "rate_limit_errors"
+  },
+  {
+    "id": "T-30059",
+    "subject": "Rate limit headers not documented",
+    "body": "The API responses include rate limit headers, but I can't find what each one means.",
+    "created_at": "2026-05-31T04:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "rate_limit_errors"
+  },
+  {
+    "id": "T-30060",
+    "subject": "Intermittent 429 responses under normal load",
+    "body": "We're not sending many requests, but we still get occasional 429 responses. Why?",
+    "created_at": "2026-06-15T11:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "rate_limit_errors"
+  },
+  {
+    "id": "T-30061",
+    "subject": "Rate limit reset time unclear",
+    "body": "How do we know when the rate limit window resets so we can retry safely?",
+    "created_at": "2026-06-30T18:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "rate_limit_errors"
+  },
+  {
+    "id": "T-30062",
+    "subject": "Different rate limits per endpoint",
+    "body": "Do different API endpoints have different rate limits, or is it a single global limit?",
+    "created_at": "2026-07-15T01:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "rate_limit_errors"
+  },
+  {
+    "id": "T-30063",
+    "subject": "How do I move from legacy plan to new pricing?",
+    "body": "We're on an old legacy plan and want to switch to the new pricing tiers. What does that process look like?",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30064",
+    "subject": "Will migrating plans affect our current data?",
+    "body": "If we migrate from the legacy plan to a new tier, will any of our existing data or settings be affected?",
+    "created_at": "2026-04-11T07:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30065",
+    "subject": "New pricing tiers not showing for our account",
+    "body": "Our account still shows old pricing. How do we get moved onto the new plan structure?",
+    "created_at": "2026-04-21T14:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30066",
+    "subject": "Cost comparison legacy vs new plan",
+    "body": "Can someone walk us through how our costs would change if we migrate to the new pricing tiers?",
+    "created_at": "2026-05-01T21:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30067",
+    "subject": "Downgrading during plan migration",
+    "body": "We want to migrate to the new pricing but end up on a lower tier than before. Is that supported?",
+    "created_at": "2026-05-11T04:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30068",
+    "subject": "Timeline for forced migration off legacy plan",
+    "body": "We heard legacy plans are being sunset. What is the timeline and process for migrating?",
+    "created_at": "2026-05-21T11:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30069",
+    "subject": "Migrating multiple workspaces to new tiers",
+    "body": "We manage five workspaces on the legacy plan. Can they all be migrated to new tiers at once?",
+    "created_at": "2026-05-31T18:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30070",
+    "subject": "Grandfathered features lost after migration",
+    "body": "Will we lose any grandfathered features if we migrate from our legacy plan to a new tier?",
+    "created_at": "2026-06-10T01:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30071",
+    "subject": "Who approves plan migration for enterprise",
+    "body": "What is the internal approval process for migrating an enterprise account to new pricing tiers?",
+    "created_at": "2026-06-20T08:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30072",
+    "subject": "Plan migration billing proration",
+    "body": "If we migrate mid-cycle, how is the billing prorated between the legacy and new plan?",
+    "created_at": "2026-06-30T15:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30073",
+    "subject": "Rolling back after plan migration",
+    "body": "Is it possible to roll back to our legacy plan if the new pricing tier doesn't work out for us?",
+    "created_at": "2026-07-10T22:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "billing_plan_migration"
+  },
+  {
+    "id": "T-30074",
+    "subject": "How does webhook retry behavior work?",
+    "body": "When our endpoint is briefly down, does the platform automatically retry sending the webhook?",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "webhook_retry_config"
+  },
+  {
+    "id": "T-30075",
+    "subject": "Configuring webhook retry attempts",
+    "body": "Can we configure how many times a failed webhook delivery is retried?",
+    "created_at": "2026-04-16T07:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "webhook_retry_config"
+  },
+  {
+    "id": "T-30076",
+    "subject": "Webhook retries causing duplicate events",
+    "body": "We're seeing duplicate events on our side. Is that from webhook retry behavior?",
+    "created_at": "2026-05-01T14:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "webhook_retry_config"
+  },
+  {
+    "id": "T-30077",
+    "subject": "Webhook retry backoff schedule",
+    "body": "What is the backoff schedule between webhook retry attempts after a failure?",
+    "created_at": "2026-05-16T21:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "webhook_retry_config"
+  },
+  {
+    "id": "T-30078",
+    "subject": "Disabling webhook retries for one endpoint",
+    "body": "Can we disable automatic retries for a specific webhook endpoint?",
+    "created_at": "2026-05-31T04:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "webhook_retry_config"
+  },
+  {
+    "id": "T-30079",
+    "subject": "Webhook delivery failed permanently, no retry",
+    "body": "Our endpoint was down for an hour and now webhook deliveries seem to have stopped retrying. Is there a retry limit?",
+    "created_at": "2026-06-15T11:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "webhook_retry_config"
+  },
+  {
+    "id": "T-30080",
+    "subject": "How to inspect failed webhook retry attempts",
+    "body": "Is there a log or dashboard showing failed webhook deliveries and retry history?",
+    "created_at": "2026-06-30T18:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "webhook_retry_config"
+  },
+  {
+    "id": "T-30081",
+    "subject": "Webhook retry after signature verification failure",
+    "body": "If our endpoint rejects a webhook due to signature mismatch, is it retried the same way as a timeout?",
+    "created_at": "2026-07-15T01:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "webhook_retry_config"
+  },
+  {
+    "id": "T-30082",
+    "subject": "How do I bulk import users via CSV?",
+    "body": "We have 200 employees to add. Is there a way to bulk import users instead of adding them one by one?",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30083",
+    "subject": "Bulk user import failing silently",
+    "body": "We tried uploading a CSV of users and nothing happened, no error and no new users.",
+    "created_at": "2026-04-10T07:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30084",
+    "subject": "Required CSV format for user import",
+    "body": "What columns and format does the bulk user import CSV need to have?",
+    "created_at": "2026-04-19T14:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30085",
+    "subject": "Assigning roles during bulk import",
+    "body": "Can we set each user's role as part of the bulk import file, or do we assign roles afterward?",
+    "created_at": "2026-04-28T21:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30086",
+    "subject": "Bulk import users from another tool",
+    "body": "We're migrating from another platform. Can we bulk import users along with their existing roles?",
+    "created_at": "2026-05-07T04:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30087",
+    "subject": "Partial failures during bulk user import",
+    "body": "Some rows failed during bulk import but we don't know which ones or why.",
+    "created_at": "2026-05-16T11:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30088",
+    "subject": "Bulk deactivating users via import",
+    "body": "Is there a bulk import option to deactivate a large list of users at once?",
+    "created_at": "2026-05-25T18:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30089",
+    "subject": "Bulk import limit on number of users",
+    "body": "Is there a maximum number of users we can include in a single bulk import file?",
+    "created_at": "2026-06-03T01:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30090",
+    "subject": "Re-running a bulk import after fixing errors",
+    "body": "After fixing a few rows, can we re-run the same bulk import file without duplicating existing users?",
+    "created_at": "2026-06-12T08:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30091",
+    "subject": "Bulk import users with SSO enabled",
+    "body": "Does bulk user import work the same way once SSO is enabled for the workspace?",
+    "created_at": "2026-06-21T15:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30092",
+    "subject": "Mapping departments during bulk import",
+    "body": "Can department or team assignment be included in the bulk user import file?",
+    "created_at": "2026-06-30T22:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30093",
+    "subject": "Bulk import audit trail",
+    "body": "Is there an audit log showing who ran a bulk user import and what changed?",
+    "created_at": "2026-07-09T05:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30094",
+    "subject": "CSV template for bulk user import",
+    "body": "Is there a downloadable template for the bulk user import CSV format?",
+    "created_at": "2026-07-18T12:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "bulk_user_import"
+  },
+  {
+    "id": "T-30095",
+    "subject": "Dashboard charts stuck on loading spinner",
+    "body": "The revenue chart on our dashboard has been stuck loading for the past hour.",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30096",
+    "subject": "Charts show no data after refresh",
+    "body": "All charts on the main dashboard show blank after I refresh the page.",
+    "created_at": "2026-04-11T07:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30097",
+    "subject": "Dashboard widgets fail to render",
+    "body": "Several widgets on our dashboard fail to render and show a generic error icon.",
+    "created_at": "2026-04-21T14:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30098",
+    "subject": "Chart loading error on Safari",
+    "body": "Our team on Safari sees a permanent loading spinner on all dashboard charts; Chrome works fine.",
+    "created_at": "2026-05-01T21:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30099",
+    "subject": "Dashboard crashes when filtering by date range",
+    "body": "Selecting a custom date range on the dashboard causes the whole page to crash.",
+    "created_at": "2026-05-11T04:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30100",
+    "subject": "Charts intermittently blank on load",
+    "body": "About half the time, opening the dashboard shows blank charts until a manual refresh.",
+    "created_at": "2026-05-21T11:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30101",
+    "subject": "Dashboard performance degraded this week",
+    "body": "Dashboard charts are taking 30+ seconds to load since yesterday, previously instant.",
+    "created_at": "2026-05-31T18:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30102",
+    "subject": "Chart tooltips showing wrong values",
+    "body": "Hovering over the dashboard chart shows numbers that don't match the summary totals.",
+    "created_at": "2026-06-10T01:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30103",
+    "subject": "Dashboard error: failed to fetch chart data",
+    "body": "We get a 'failed to fetch chart data' error banner on the dashboard several times a day.",
+    "created_at": "2026-06-20T08:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30104",
+    "subject": "Charts not updating after new data arrives",
+    "body": "New tickets aren't reflected in the dashboard charts until much later than expected.",
+    "created_at": "2026-06-30T15:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30105",
+    "subject": "Dashboard chart legend overlapping labels",
+    "body": "The legend on the dashboard bar chart overlaps the axis labels, making it unreadable.",
+    "created_at": "2026-07-10T22:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30106",
+    "subject": "Dashboard blank for one specific workspace",
+    "body": "Every other workspace loads fine, but one of our workspaces shows a completely blank dashboard.",
+    "created_at": "2026-07-20T05:00:00Z",
+    "product_area": "reporting",
+    "ticket_type": "bug",
+    "topic": "dashboard_charts_not_loading"
+  },
+  {
+    "id": "T-30107",
+    "subject": "Mobile app crashes immediately after login",
+    "body": "Every time I log in on the iOS app, it crashes within two seconds.",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "mobile",
+    "ticket_type": "bug",
+    "topic": "mobile_app_crash_login"
+  },
+  {
+    "id": "T-30108",
+    "subject": "Android app force closes on startup",
+    "body": "The Android app force closes right after the splash screen since the latest update.",
+    "created_at": "2026-04-14T07:00:00Z",
+    "product_area": "mobile",
+    "ticket_type": "bug",
+    "topic": "mobile_app_crash_login"
+  },
+  {
+    "id": "T-30109",
+    "subject": "App crash after entering SSO credentials",
+    "body": "The mobile app crashes right after I complete the SSO login flow.",
+    "created_at": "2026-04-27T14:00:00Z",
+    "product_area": "mobile",
+    "ticket_type": "bug",
+    "topic": "mobile_app_crash_login"
+  },
+  {
+    "id": "T-30110",
+    "subject": "Mobile login loop, never reaches home screen",
+    "body": "The app keeps returning to the login screen in a loop and never loads the dashboard.",
+    "created_at": "2026-05-10T21:00:00Z",
+    "product_area": "mobile",
+    "ticket_type": "bug",
+    "topic": "mobile_app_crash_login"
+  },
+  {
+    "id": "T-30111",
+    "subject": "iOS app crash on biometric login",
+    "body": "Using Face ID to log in on iOS causes an immediate crash.",
+    "created_at": "2026-05-23T04:00:00Z",
+    "product_area": "mobile",
+    "ticket_type": "bug",
+    "topic": "mobile_app_crash_login"
+  },
+  {
+    "id": "T-30112",
+    "subject": "Mobile app white screen after login",
+    "body": "After logging in on Android, the screen goes completely white and the app becomes unresponsive.",
+    "created_at": "2026-06-05T11:00:00Z",
+    "product_area": "mobile",
+    "ticket_type": "bug",
+    "topic": "mobile_app_crash_login"
+  },
+  {
+    "id": "T-30113",
+    "subject": "App crashes only for users with 2FA enabled",
+    "body": "Users with two-factor authentication enabled report the mobile app crashing after entering the code.",
+    "created_at": "2026-06-18T18:00:00Z",
+    "product_area": "mobile",
+    "ticket_type": "bug",
+    "topic": "mobile_app_crash_login"
+  },
+  {
+    "id": "T-30114",
+    "subject": "Mobile crash report attached, login screen",
+    "body": "Attaching a crash log; it happens consistently right after tapping the login button.",
+    "created_at": "2026-07-01T01:00:00Z",
+    "product_area": "mobile",
+    "ticket_type": "bug",
+    "topic": "mobile_app_crash_login"
+  },
+  {
+    "id": "T-30115",
+    "subject": "App unusable since update, crashes on launch",
+    "body": "Since updating the app yesterday, it crashes on launch before we even reach the login screen.",
+    "created_at": "2026-07-14T08:00:00Z",
+    "product_area": "mobile",
+    "ticket_type": "bug",
+    "topic": "mobile_app_crash_login"
+  },
+  {
+    "id": "T-30116",
+    "subject": "Can I change my account email address?",
+    "body": "I need to update the email address associated with my account.",
+    "created_at": "2026-04-01T00:00:00Z",
+    "product_area": "account",
+    "ticket_type": "question",
+    "topic": "noise"
+  },
+  {
+    "id": "T-30117",
+    "subject": "How do I cancel my subscription?",
+    "body": "We'd like to cancel our subscription at the end of the current billing cycle.",
+    "created_at": "2026-04-25T07:00:00Z",
+    "product_area": "billing",
+    "ticket_type": "question",
+    "topic": "noise"
+  },
+  {
+    "id": "T-30118",
+    "subject": "Is there a dark mode option?",
+    "body": "Would like to know if a dark mode theme is available or planned.",
+    "created_at": "2026-05-19T14:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "noise"
+  },
+  {
+    "id": "T-30119",
+    "subject": "Can I invite an external contractor as a guest?",
+    "body": "We have a contractor who needs limited guest access. Is that supported?",
+    "created_at": "2026-06-12T21:00:00Z",
+    "product_area": "admin",
+    "ticket_type": "question",
+    "topic": "noise"
+  },
+  {
+    "id": "T-30120",
+    "subject": "Does the API support GraphQL?",
+    "body": "We prefer GraphQL over REST. Is there a GraphQL endpoint available?",
+    "created_at": "2026-07-06T04:00:00Z",
+    "product_area": "platform",
+    "ticket_type": "question",
+    "topic": "noise"
+  }
+]
