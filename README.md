@@ -25,6 +25,10 @@ All demo data is synthetic. No customer or employer data is included.
 The repository contains no production integrations, credentials, private URLs,
 or real support conversations.
 
+## Screenshot
+
+![AI Knowledge Gap Agent dashboard](assets/app-screenshot.png)
+
 ## Demo
 
 The dashboard classifies nine recurring documentation themes as good, weak, or
