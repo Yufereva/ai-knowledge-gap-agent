@@ -11,6 +11,7 @@ Pipeline:
 
 from __future__ import annotations
 
+import hashlib
 import json
 from collections import Counter
 from pathlib import Path
@@ -68,6 +69,19 @@ def _article_text(article: dict) -> str:
     return f"{article['title']} {article['content']}"
 
 
+def _fingerprint(texts: list[str]) -> str:
+    """Identify the exact text the cache was built from.
+
+    Ticket and article IDs are stable while their wording is edited, so the IDs
+    alone cannot tell a stale cache from a current one.
+    """
+    digest = hashlib.sha256()
+    for text in texts:
+        digest.update(text.encode("utf-8"))
+        digest.update(b"\x00")
+    return digest.hexdigest()
+
+
 def _embed(texts: list[str]):
     from sentence_transformers import SentenceTransformer
 
@@ -84,12 +98,16 @@ def compute_embeddings(
     articles = articles if articles is not None else load_kb_articles()
     ticket_ids = [t["id"] for t in tickets]
     article_ids = [a["id"] for a in articles]
+    ticket_texts = [_ticket_text(t) for t in tickets]
+    article_texts = [_article_text(a) for a in articles]
+    fingerprint = _fingerprint(ticket_texts + article_texts)
 
     if not force_recompute and CACHE_PATH.exists():
         data = np.load(CACHE_PATH, allow_pickle=True)
         if (
             data["ticket_ids"].tolist() == ticket_ids
             and data["article_ids"].tolist() == article_ids
+            and str(data["fingerprint"]) == fingerprint
         ):
             return {
                 "ticket_ids": ticket_ids,
@@ -98,8 +116,8 @@ def compute_embeddings(
                 "article_embeddings": data["article_embeddings"],
             }
 
-    ticket_embeddings = _embed([_ticket_text(t) for t in tickets])
-    article_embeddings = _embed([_article_text(a) for a in articles])
+    ticket_embeddings = _embed(ticket_texts)
+    article_embeddings = _embed(article_texts)
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     np.savez(
@@ -108,6 +126,7 @@ def compute_embeddings(
         ticket_embeddings=ticket_embeddings,
         article_ids=np.array(article_ids),
         article_embeddings=article_embeddings,
+        fingerprint=np.array(fingerprint),
     )
     return {
         "ticket_ids": ticket_ids,
@@ -275,6 +294,11 @@ def _outline_from_tickets(tickets: list[dict], limit: int = 8) -> list[str]:
     return outline
 
 
+def proposed_outline(theme: dict) -> list[str]:
+    """Section headings proposed for the theme, before validation."""
+    return _outline_from_tickets(theme["evidence_tickets"])
+
+
 def _customer_questions(tickets: list[dict]) -> list[str]:
     questions = []
     for ticket in tickets:
@@ -287,10 +311,10 @@ def _customer_questions(tickets: list[dict]) -> list[str]:
     return questions
 
 
-def draft_content_brief(theme: dict) -> str:
+def draft_content_brief(theme: dict, outline: list[str] | None = None) -> str:
     coverage = theme["coverage"]
     tickets = theme["evidence_tickets"]
-    outline = _outline_from_tickets(tickets)
+    outline = outline if outline is not None else proposed_outline(theme)
     questions = _customer_questions(tickets)
     outline_md = "\n".join(f"{i}. {heading}" for i, heading in enumerate(outline, start=1))
     questions_md = "\n".join(f"- {q}" for q in questions)

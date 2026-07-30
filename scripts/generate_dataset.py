@@ -16,6 +16,13 @@ recur frequently.
 The `topic` field on each ticket is metadata for dataset design and test
 evaluation only. It is never passed to the embedding model; clustering must
 work from ticket subject/body text alone.
+
+Tickets also carry the fields the validation pipeline needs and that cannot be
+derived from text: `customer_id` (unique-customer thresholds),
+`product_version` (contradiction detection against a versioned article), and
+self-service search outcome (`searched`, `search_top_article`) so a real
+documentation gap can be told apart from content that exists but is never
+retrieved.
 """
 
 import json
@@ -43,6 +50,19 @@ def _ticket_id(counter: int) -> str:
     return f"T-{ID_START + counter - 1:05d}"
 
 
+# Synthetic account identifiers. Ticket volume alone cannot tell one noisy
+# customer apart from a recurring problem across the base, so the validation
+# pipeline counts unique accounts.
+ACCOUNTS = [f"ACCT-{1000 + i}" for i in range(1, 25)]
+
+DEFAULT_VERSION = "4.1"
+
+
+def _accounts_for(topic_index: int, count: int = 4) -> list[str]:
+    start = (topic_index * 3) % len(ACCOUNTS)
+    return [ACCOUNTS[(start + i) % len(ACCOUNTS)] for i in range(count)]
+
+
 # Each topic entry drives generation of N tickets that share a real customer
 # problem, phrased in varied ways (not copy-pasted) so clustering must rely on
 # semantic similarity rather than exact string matches.
@@ -51,6 +71,9 @@ DOC_TOPICS = [
         "topic": "api_key_reset",
         "product_area": "platform",
         "intended_coverage": "good",
+        # A complete article exists, but self-service search returns nothing for
+        # how customers phrase it. This is a findability problem, not a gap.
+        "search": {"searched": True, "top": None},
         "variants": [
             ("Can't find where to reset my API key", "I need to rotate our API key after an employee left but I can't find the setting anywhere in the dashboard."),
             ("How do I regenerate an API key?", "Our current API key may have been exposed. What are the steps to generate a new one without breaking our integration?"),
@@ -72,6 +95,7 @@ DOC_TOPICS = [
         "topic": "sso_setup",
         "product_area": "security",
         "intended_coverage": "good",
+        "search": {"searched": True, "top": "KB-002"},
         "variants": [
             ("Configuring SSO with Okta", "We use Okta company-wide and want all logins to go through SSO. How do we set that up?"),
             ("Azure AD single sign-on setup", "Our IT team wants to enforce Azure AD SSO for this tool. What configuration is required on our side?"),
@@ -91,6 +115,9 @@ DOC_TOPICS = [
         "topic": "timezone_settings",
         "product_area": "platform",
         "intended_coverage": "good",
+        # Search keeps returning the scheduled-reports article instead of the
+        # timezone article, so retrieval ranks the wrong content.
+        "search": {"searched": True, "top": "KB-015"},
         "variants": [
             ("Change workspace default timezone", "All our reports show times in UTC, but our team is in EST. How do we change the default timezone?"),
             ("Timezone setting affecting scheduled reports", "Our scheduled reports arrive at the wrong local time. Where do we set the workspace timezone?"),
@@ -107,6 +134,7 @@ DOC_TOPICS = [
         "topic": "csv_export",
         "product_area": "reporting",
         "intended_coverage": "weak",
+        "search": {"searched": True, "top": "KB-004"},
         "variants": [
             ("How do I export data as CSV?", "I need to download our ticket data as a CSV file for a board presentation. Is that possible?"),
             ("CSV export missing some columns", "When I export to CSV, several columns from the dashboard view are missing. Is that expected?"),
@@ -124,6 +152,7 @@ DOC_TOPICS = [
         "topic": "two_factor_auth",
         "product_area": "security",
         "intended_coverage": "weak",
+        "search": {"searched": True, "top": "KB-005"},
         "variants": [
             ("How do I turn on two-factor authentication?", "We want to require 2FA for all admin accounts. Where do we enable that?"),
             ("2FA setup with authenticator app", "Can we use Google Authenticator for two-factor authentication, or only SMS codes?"),
@@ -140,6 +169,7 @@ DOC_TOPICS = [
         "topic": "rate_limit_errors",
         "product_area": "platform",
         "intended_coverage": "weak",
+        "search": {"searched": True, "top": "KB-006"},
         "variants": [
             ("Getting 429 errors from the API", "Our integration suddenly started returning 429 errors. What are the current rate limits?"),
             ("What is our API rate limit?", "We're scaling up our integration and need to know the exact request-per-minute rate limit."),
@@ -155,6 +185,7 @@ DOC_TOPICS = [
         "topic": "billing_plan_migration",
         "product_area": "billing",
         "intended_coverage": "missing",
+        "search": {"searched": True, "top": None},
         "variants": [
             ("How do I move from legacy plan to new pricing?", "We're on an old legacy plan and want to switch to the new pricing tiers. What does that process look like?"),
             ("Will migrating plans affect our current data?", "If we migrate from the legacy plan to a new tier, will any of our existing data or settings be affected?"),
@@ -173,6 +204,11 @@ DOC_TOPICS = [
         "topic": "webhook_retry_config",
         "product_area": "platform",
         "intended_coverage": "weak",
+        "search": {"searched": True, "top": "KB-012"},
+        # These customers are on 4.2, where retries are no longer automatic.
+        # KB-012 still documents the 4.1 behavior, so the evidence contradicts
+        # the published article.
+        "product_version": "4.2",
         "variants": [
             ("How does webhook retry behavior work?", "When our endpoint is briefly down, does the platform automatically retry sending the webhook?"),
             ("Configuring webhook retry attempts", "Can we configure how many times a failed webhook delivery is retried?"),
@@ -182,12 +218,15 @@ DOC_TOPICS = [
             ("Webhook delivery failed permanently, no retry", "Our endpoint was down for an hour and now webhook deliveries seem to have stopped retrying. Is there a retry limit?"),
             ("How to inspect failed webhook retry attempts", "Is there a log or dashboard showing failed webhook deliveries and retry history?"),
             ("Webhook retry after signature verification failure", "If our endpoint rejects a webhook due to signature mismatch, is it retried the same way as a timeout?"),
+            ("Retries no longer automatic after 4.2 upgrade", "Since we upgraded to 4.2, automatic webhook retries stopped and we now have to re-enable retries manually for every endpoint."),
+            ("Do we have to re-enable retries manually now?", "The documentation says retries are automatic, but on our version we must turn retries back on manually after each failure. Which is correct?"),
         ],
     },
     {
         "topic": "bulk_user_import",
         "product_area": "admin",
         "intended_coverage": "missing",
+        "search": {"searched": True, "top": None},
         "variants": [
             ("How do I bulk import users via CSV?", "We have 200 employees to add. Is there a way to bulk import users instead of adding them one by one?"),
             ("Bulk user import failing silently", "We tried uploading a CSV of users and nothing happened, no error and no new users."),
@@ -261,9 +300,13 @@ NOISE_DOC_TICKETS = [
 def _build_doc_tickets() -> list[dict]:
     tickets = []
     counter = 1
-    for topic in DOC_TOPICS:
+    for topic_index, topic in enumerate(DOC_TOPICS):
         dates = _dates(len(topic["variants"]))
-        for (subject, body), created_at in zip(topic["variants"], dates, strict=True):
+        accounts = _accounts_for(topic_index)
+        search = topic["search"]
+        for position, ((subject, body), created_at) in enumerate(
+            zip(topic["variants"], dates, strict=True)
+        ):
             tickets.append(
                 {
                     "id": _ticket_id(counter),
@@ -273,6 +316,10 @@ def _build_doc_tickets() -> list[dict]:
                     "product_area": topic["product_area"],
                     "ticket_type": "question",
                     "topic": topic["topic"],
+                    "customer_id": accounts[position % len(accounts)],
+                    "product_version": topic.get("product_version", DEFAULT_VERSION),
+                    "searched": search["searched"],
+                    "search_top_article": search["top"],
                 }
             )
             counter += 1
@@ -281,9 +328,12 @@ def _build_doc_tickets() -> list[dict]:
 
 def _build_bug_tickets(counter: int) -> tuple[list[dict], int]:
     tickets = []
-    for topic in BUG_TOPICS:
+    for topic_index, topic in enumerate(BUG_TOPICS):
         dates = _dates(len(topic["variants"]))
-        for (subject, body), created_at in zip(topic["variants"], dates, strict=True):
+        accounts = _accounts_for(len(DOC_TOPICS) + topic_index)
+        for position, ((subject, body), created_at) in enumerate(
+            zip(topic["variants"], dates, strict=True)
+        ):
             tickets.append(
                 {
                     "id": _ticket_id(counter),
@@ -293,6 +343,10 @@ def _build_bug_tickets(counter: int) -> tuple[list[dict], int]:
                     "product_area": topic["product_area"],
                     "ticket_type": "bug",
                     "topic": topic["topic"],
+                    "customer_id": accounts[position % len(accounts)],
+                    "product_version": DEFAULT_VERSION,
+                    "searched": False,
+                    "search_top_article": None,
                 }
             )
             counter += 1
@@ -302,7 +356,9 @@ def _build_bug_tickets(counter: int) -> tuple[list[dict], int]:
 def _build_noise_tickets(counter: int) -> tuple[list[dict], int]:
     tickets = []
     dates = _dates(len(NOISE_DOC_TICKETS))
-    for (subject, body, area), created_at in zip(NOISE_DOC_TICKETS, dates, strict=True):
+    for position, ((subject, body, area), created_at) in enumerate(
+        zip(NOISE_DOC_TICKETS, dates, strict=True)
+    ):
         tickets.append(
             {
                 "id": _ticket_id(counter),
@@ -312,6 +368,12 @@ def _build_noise_tickets(counter: int) -> tuple[list[dict], int]:
                 "product_area": area,
                 "ticket_type": "question",
                 "topic": "noise",
+                # One-off questions come from one account each, so they also fail
+                # the unique-customer threshold, not only the volume threshold.
+                "customer_id": ACCOUNTS[-(position + 1)],
+                "product_version": DEFAULT_VERSION,
+                "searched": False,
+                "search_top_article": None,
             }
         )
         counter += 1
@@ -417,8 +479,12 @@ KB_ARTICLES = [
         "title": "Integrations Overview",
         "content": (
             "The platform integrates with popular tools like Slack, Salesforce, and Jira. Webhooks "
-            "notify external systems when events occur, such as a new ticket being created."
+            "notify external systems when events occur, such as a new ticket being created. "
+            "Delivery is handled automatically and no configuration is required."
         ),
+        # Written for 4.1. Customers on 4.2 report the opposite behavior, which is
+        # what the contradiction validator has to catch.
+        "applies_to_version": "4.1",
     },
     {
         "id": "KB-013",
@@ -452,15 +518,19 @@ def generate() -> None:
     bug_tickets, counter = _build_bug_tickets(counter)
     noise_tickets, counter = _build_noise_tickets(counter)
     tickets = doc_tickets + bug_tickets + noise_tickets
+    articles = [
+        {**article, "applies_to_version": article.get("applies_to_version", DEFAULT_VERSION)}
+        for article in KB_ARTICLES
+    ]
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     (DATA_DIR / "tickets.json").write_text(
         json.dumps(tickets, indent=2), encoding="utf-8"
     )
     (DATA_DIR / "kb_articles.json").write_text(
-        json.dumps(KB_ARTICLES, indent=2), encoding="utf-8"
+        json.dumps(articles, indent=2), encoding="utf-8"
     )
-    print(f"Wrote {len(tickets)} tickets and {len(KB_ARTICLES)} KB articles to {DATA_DIR}")
+    print(f"Wrote {len(tickets)} tickets and {len(articles)} KB articles to {DATA_DIR}")
 
 
 if __name__ == "__main__":

@@ -12,13 +12,17 @@ import streamlit.components.v1 as components
 import knowledge_gap as _kg
 import ollama_draft as _od
 import review_store as _store
+import validators.validation_report as _vr
 
 # Streamlit often keeps a stale knowledge_gap module in memory on Windows/OneDrive.
 # Force a reload so new helpers are always visible after code changes.
 _kg = importlib.reload(_kg)
 _od = importlib.reload(_od)
 _store = importlib.reload(_store)
+_vr = importlib.reload(_vr)
 analyze = _kg.analyze
+build_report = _vr.build_report
+proposed_outline = _kg.proposed_outline
 draft_content_brief = _kg.draft_content_brief
 get_ticket = _kg.get_ticket
 load_kb_articles = _kg.load_kb_articles
@@ -138,6 +142,35 @@ div[data-testid="stButton"] > button {
 .pill-missing { background: #ffe2dd; color: #9f2b12; }
 .pill-weak { background: #fdecc8; color: #8a5300; }
 .pill-good { background: #dbeddb; color: #1d6b32; }
+
+/* Validation verdict shown on every theme card before any draft is offered */
+.verdict {
+  border: 1px solid #e9e9e7;
+  border-left: 4px solid #9b9a97;
+  border-radius: 6px;
+  background: #fbfbfa;
+  padding: 8px 12px;
+  margin: 8px 0 2px;
+}
+.verdict-ok { border-left-color: #2f9e44; }
+.verdict-review { border-left-color: #f59f00; }
+.verdict-blocked { border-left-color: #e35b5b; }
+.verdict-action {
+  font-size: 12px;
+  font-weight: 600;
+  color: #37352f;
+  margin: 0 0 2px;
+}
+.verdict-reason {
+  font-size: 12px;
+  color: #787774;
+  margin: 0;
+}
+.verdict-metrics {
+  font-size: 11px;
+  color: #9b9a97;
+  margin: 4px 0 0;
+}
 .focus-note {
   display: inline-block;
   background: #e7f3f8;
@@ -395,6 +428,51 @@ def render_content_brief(brief: str) -> None:
         f"{markdown_to_html(brief)}</div></div>",
         unsafe_allow_html=True,
     )
+
+
+VERDICT_STYLE = {
+    "Present to Content Owner": "verdict-ok",
+    "Update Existing Article": "verdict-ok",
+    "Needs SME Review": "verdict-review",
+    "Improve Search Metadata": "verdict-review",
+    "Insufficient Evidence": "verdict-blocked",
+    "Reject": "verdict-blocked",
+}
+
+
+def render_validation(report: dict) -> None:
+    """Show the verdict that decides whether a draft is offered at all."""
+    support = next(
+        stage for stage in report["stages"] if stage["stage"] == "minimum_support"
+    )
+    metrics = (
+        f"Gap class: {report['gap_class']}. "
+        f"Evidence: {report['evidence_strength']} "
+        f"({support['metrics']['tickets']} tickets, "
+        f"{support['metrics']['unique_customers']} customers, "
+        f"{support['metrics']['time_span_days']} days). "
+        f"Gap confidence {report['content_gap_confidence']:.0%}. "
+        f"Overlap with closest article {report['duplicate_score']:.0%}. "
+        f"Outline completeness {report['outline_completeness']:.0%}."
+    )
+    st.markdown(
+        f'<div class="verdict {VERDICT_STYLE[report["recommended_action"]]}">'
+        f'<p class="verdict-action">Validation: {html.escape(report["recommended_action"])}</p>'
+        f'<p class="verdict-reason">{html.escape(" ".join(report["reasons"]))}</p>'
+        f'<p class="verdict-metrics">{html.escape(metrics)}</p>'
+        f"</div>",
+        unsafe_allow_html=True,
+    )
+
+    with st.expander("Validation report", expanded=False):
+        for stage in report["stages"]:
+            name = stage["stage"].replace("_", " ").capitalize()
+            st.markdown(f"**{name}** ({stage['status']}): {stage['summary']}")
+        if report["withheld_sections"]:
+            st.caption(
+                "Withheld from the outline until an SME confirms them: "
+                + "; ".join(report["withheld_sections"])
+            )
 
 
 def render_published_article() -> None:
@@ -756,8 +834,14 @@ def render_dashboard() -> None:
                 unsafe_allow_html=True,
             )
 
+            customers = {
+                ticket.get("customer_id")
+                for ticket in theme["evidence_tickets"]
+                if ticket.get("customer_id")
+            }
             st.caption(
-                f"**{theme['ticket_count']} customers** asked about this "
+                f"**{len(customers)} customers** across "
+                f"**{theme['ticket_count']} tickets** "
                 f"(product area: {theme['product_area']}). {article_line}"
             )
 
@@ -766,8 +850,12 @@ def render_dashboard() -> None:
                     f"[Open article to improve →]({kb_article_url(article['id'], theme['theme_id'])})"
                 )
 
-            if theme["coverage"] != "good":
-                content_brief = draft_content_brief(theme)
+            report = build_report(theme, proposed_outline(theme))
+            render_validation(report)
+
+            review_col = None
+            if report["may_present_outline"]:
+                content_brief = draft_content_brief(theme, report["validated_outline"])
                 with st.expander("Draft content brief", expanded=False):
                     render_content_brief(content_brief)
 
@@ -826,28 +914,11 @@ def render_dashboard() -> None:
                         st.query_params["mode"] = "published"
                         st.query_params["theme"] = theme["theme_id"]
                         st.rerun()
+            else:
+                review_col, _ = st.columns([1, 3])
 
-                with review_col:
-                    if is_addressed:
-                        if st.button(
-                            "Reopen",
-                            key=f"reopen_{action_key}",
-                            use_container_width=True,
-                        ):
-                            unmark_addressed(theme["theme_id"])
-                            st.rerun()
-                    else:
-                        if st.button(
-                            "Mark as addressed",
-                            key=f"addr_{action_key}",
-                            use_container_width=True,
-                            type="primary",
-                        ):
-                            mark_addressed(theme["theme_id"], theme)
-                            st.rerun()
-            elif is_addressed:
-                action_col, _ = st.columns([1, 3])
-                with action_col:
+            with review_col:
+                if is_addressed:
                     if st.button(
                         "Reopen",
                         key=f"reopen_{action_key}",
@@ -855,7 +926,15 @@ def render_dashboard() -> None:
                     ):
                         unmark_addressed(theme["theme_id"])
                         st.rerun()
-
+                else:
+                    if st.button(
+                        "Mark as addressed",
+                        key=f"addr_{action_key}",
+                        use_container_width=True,
+                        type="primary",
+                    ):
+                        mark_addressed(theme["theme_id"], theme)
+                        st.rerun()
     if st.session_state.pop("scroll_to_focus", False):
         components.html(
             """

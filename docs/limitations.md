@@ -6,8 +6,13 @@
   embeddings (semantic similarity), not keyword matching.
 - Compares each recurring theme against a knowledge base and classifies
   coverage as good, weak, or missing based on the closest matching article.
-- Drafts a content brief recommendation for any theme that is not well
-  covered, citing the exact evidence tickets behind it.
+- Validates each proposed outline before a content owner sees it: maps sections
+  to supporting tickets, checks volume across accounts and time, classifies what
+  kind of gap it is, compares against existing articles, reports which raised
+  concepts the outline omits, and looks for articles that contradict the
+  evidence.
+- Drafts a content brief recommendation for any theme that survives validation,
+  citing the exact evidence tickets behind it.
 - Optionally uses a local Ollama model to turn the brief into a fuller
   customer-facing article draft.
 - Lets a reviewer publish an approved draft to a local demo knowledge base
@@ -40,11 +45,40 @@
   against this synthetic dataset and the `all-MiniLM-L6-v2` embedding model.
   They are not validated against real support or KB data.
 
+## What the validation pipeline can and cannot decide
+
+- The "poor findability" and "agent retrieval failure" classes depend on the
+  synthetic `searched` and `search_top_article` fields on each ticket. A real
+  deployment would need help center search analytics or agent retrieval logs,
+  and those signals are usually incomplete.
+- The unique-customer rule depends on the synthetic `customer_id`. Ticket volume
+  from one account is not the same finding as volume across accounts, so without
+  account data this rule cannot run.
+- The support threshold in the spec allows a high customer impact override. The
+  synthetic dataset carries no impact or revenue signal, so `high_impact`
+  defaults to false and the time-span rule decides instead.
+- Outline completeness is detected with explicit phrase lists
+  (`validators/completeness_validator.py`). It can miss a paraphrase, and it
+  deliberately does not block review: an outline written as customer questions
+  legitimately lacks procedural wording, so blocking there would reject real
+  gaps. Missing concepts are reported as sections to add.
+- Contradiction detection is one deterministic rule family paired with product
+  version data, not general purpose entailment. It catches an article that
+  claims automatic behavior while customers on a newer version report manual
+  work, and it will miss other kinds of conflict.
+- Confidence is a weighted blend of three signals with fixed weights, reported
+  in `validators/validation_report.py`. It is a ranking aid, not a probability.
+- The pipeline judges whether evidence supports documentation work. It cannot
+  judge whether the resulting article would be factually correct.
+
 ## Human-in-the-loop
 
-Every ranked gap includes the evidence tickets that produced it. The content
-brief is a draft recommendation for a content owner to accept, edit, or
-reject. Ollama output is also labeled "review required" and remains local;
+Every ranked gap includes the evidence tickets that produced it, and every theme
+carries a validation verdict with the reasons behind it. A theme whose evidence
+does not justify documentation work does not get a draft at all: it gets a
+different recommendation, such as improving search metadata or asking an SME.
+The content brief is a draft recommendation for a content owner to accept, edit,
+or reject. Ollama output is also labeled "review required" and remains local;
 the agent never assumes the generated article is correct. Publishing is never
 automatic: a reviewer must click **Publish to knowledge base**, and even then
 the article only lands on this app's local demo help-center page.
