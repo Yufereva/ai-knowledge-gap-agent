@@ -18,10 +18,13 @@ jobs:
         uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-          cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        # sentence-transformers pulls the CUDA build of torch by default, which
+        # adds ~2.5 GB of GPU wheels this CPU-only runner never uses.
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
 
       - name: Run lint
         run: python -m ruff check .
